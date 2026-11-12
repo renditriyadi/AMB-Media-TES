@@ -1,0 +1,34 @@
+/* ===== Halaman login AMB Media (intro + latar canvas) ===== */
+.amb-auth{--cb:rgba(255,255,255,.84);--ink:#1c1917;--tile:#FFFBEB;--k1:#F59E0B;--k2:#92400E;--k3:#B45309;--k4:#FCD34D;--k5:#D97706;--k6:#F59E0B;--play:#FFFBEB}
+.dark .amb-auth{--cb:rgba(18,18,22,.78);--ink:#f4f4f5;--tile:#0E0E12;--k1:#FDE68A;--k2:#F59E0B;--k3:#D97706;--k4:#FBBF24;--k5:#F59E0B;--k6:#FDE68A;--play:#0E0E12}
+
+.auth-bg{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+
+/* card + garis tepi berkilau (ring 1px, tidak tembus ke dalam card) */
+.auth-card{position:relative;background:var(--cb);border:1px solid transparent;box-shadow:0 0 0 1px rgba(120,113,108,.14),0 30px 80px -20px rgba(0,0,0,.35);opacity:0}
+.auth-card::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;background:conic-gradient(from var(--a,0deg),rgba(245,158,11,0) 0%,rgba(245,158,11,.95) 10%,rgba(245,158,11,0) 28%,rgba(245,158,11,0) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.auth-card [data-s]{opacity:0}
+
+/* lockup intro */
+.auth-lock{position:fixed;left:0;top:0;z-index:30;transform-origin:0 0;display:flex;align-items:center;gap:24px;pointer-events:none;visibility:hidden;will-change:transform}
+.auth-icon{width:112px;height:112px;flex:0 0 112px;filter:drop-shadow(0 10px 24px rgba(245,158,11,.28))}
+.auth-word{font-family:'Playfair Display',Georgia,serif;font-size:84px;line-height:1.15;letter-spacing:-.01em;white-space:nowrap;color:var(--ink)}
+.auth-ch{display:inline-block;transform-origin:50% 100%;opacity:0}
+.auth-sp{display:inline-block;width:.3em}
+.auth-probe{display:inline-block;width:0;height:0}
+.auth-cvb{position:absolute;pointer-events:none}
+.auth-icon *{transform-box:fill-box;transform-origin:center}
+.auth-tbg{fill:var(--tile)}
+.auth-k1{fill:var(--k1)}.auth-k2{fill:var(--k2)}.auth-k3{fill:var(--k3)}.auth-k4{fill:var(--k4)}.auth-k5{fill:var(--k5)}.auth-k6{fill:var(--k6)}
+.auth-pl{fill:var(--play);stroke:var(--play)}
+
+@media (prefers-reduced-motion:no-preference){
+  .auth-icon.play:not(.fin) .auth-tile{animation:auth-tileIn .4s cubic-bezier(.2,.8,.2,1) both}
+  .auth-icon.play:not(.fin) .auth-drop{animation:auth-dropIn .5s cubic-bezier(.34,1.56,.64,1) var(--d) both}
+  .auth-icon.play:not(.fin) .auth-bob{animation:auth-bob 3.4s ease-in-out var(--bd) infinite}
+  .auth-icon.play:not(.fin) .auth-pop{animation:auth-popIn .4s cubic-bezier(.34,1.8,.64,1) .75s both}
+}
+@keyframes auth-tileIn{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:scale(1)}}
+@keyframes auth-dropIn{from{opacity:0;transform:translateY(var(--dy)) scale(.7)}to{opacity:1;transform:none}}
+@keyframes auth-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.4px)}}
+@keyframes auth-popIn{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
